@@ -26,7 +26,7 @@ SECRET_KEY = 'bm!d5ybxl$%66cni()d1qm8ff0ulit9d_@t^-t!_g2t_c&u4l('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users'
+    'users',
+    'django_email_verification'
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+EMAIL_ACTIVE_FIELD = 'is_active'
+EMAIL_SERVER = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_ADDRESS = 'commonpeople02@gmail.com'
+EMAIL_FROM_ADDRESS = 'noreply@aliasaddress.com'
+EMAIL_PASSWORD = 'Common@123' # os.environ['password_key'] suggested
+EMAIL_MAIL_SUBJECT = 'Confirm your email'
+EMAIL_MAIL_HTML = 'costumers/emailverification.html'
+EMAIL_MAIL_PLAIN = 'costumers/mail_body.txt'
+EMAIL_PAGE_TEMPLATE = 'costumers/verification_success.html'
+EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
+
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# SESSION_COOKIE_AGE = 0
+# SESSION_SAVE_EVERY_REQUEST = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
