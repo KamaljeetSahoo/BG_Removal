@@ -105,14 +105,14 @@ AUTH_PASSWORD_VALIDATORS = [
 EMAIL_ACTIVE_FIELD = 'is_active'
 EMAIL_SERVER = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_ADDRESS = 'kamaljeetsahoo@gmail.com'
+EMAIL_ADDRESS = 'commonpeople02@gmail.com'
 EMAIL_FROM_ADDRESS = 'noreply@aliasaddress.com'
-EMAIL_PASSWORD = '' # os.environ['password_key'] suggested
+EMAIL_PASSWORD = 'Common@123' # os.environ['password_key'] suggested
 EMAIL_MAIL_SUBJECT = 'Confirm your email'
 EMAIL_MAIL_HTML = 'costumers/emailverification.html'
 EMAIL_MAIL_PLAIN = 'costumers/mail_body.txt'
 EMAIL_PAGE_TEMPLATE = 'costumers/verification_success.html'
-EMAIL_PAGE_DOMAIN = 'http://9266a720eadb.ngrok.io/'
+EMAIL_PAGE_DOMAIN = 'https://dca724571c3f.ngrok.io/'
 
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # SESSION_COOKIE_AGE = 0
