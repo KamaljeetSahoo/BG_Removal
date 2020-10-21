@@ -164,8 +164,8 @@ def inference_once(model, scale_img, scale_trimap, aligned=True, stage=1):
     #tensor_grad = torch.from_numpy(scale_grad.astype(np.float32)[np.newaxis, np.newaxis, :, :])
 
 
-    tensor_img = tensor_img.cuda()
-    tensor_trimap = tensor_trimap.cuda()
+    #tensor_img = tensor_img.cuda()
+    #tensor_trimap = tensor_trimap.cuda()
     #tensor_grad = tensor_grad.cuda()
     #print('Img Shape:{} Trimap Shape:{}'.format(img.shape, trimap.shape))
 
@@ -226,7 +226,8 @@ def dispart(deeplab, segments, cluster_type=quickshift, n_class=2):
 
 def generate_trimap(model, image_path, kernel_size=10, device='cuda', dispart_mode = None):
     model = model.to(device).eval()
-    img = Image.open(image_path)
+    #img = Image.open(image_path)
+    img = image_path
 
     trf = T.Compose([T.ToTensor(),
                      T.Normalize(mean = [0.485, 0.456, 0.406],
@@ -283,7 +284,8 @@ def generate_trimap(model, image_path, kernel_size=10, device='cuda', dispart_mo
     rgb_fg_gray = cv2.cvtColor(rgb_, cv2.COLOR_BGR2GRAY)
     _,rgb_fg_bw = cv2.threshold(rgb_fg_gray,10,255,cv2.THRESH_BINARY)
 
-    img = np.array(Image.open(image_path))
+    #img = np.array(Image.open(image_path))
+    img = np.array(image_path)
 
     #img_fz = felzenszwalb(img, scale=100, sigma=0.5, min_size=50)
     #img_fz = felzenszwalb(img, scale=100, sigma=0.5, min_size=50)

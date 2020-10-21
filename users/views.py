@@ -24,7 +24,7 @@ def costumer_register(request):
 
 @login_required
 def costumerhomeview(request):
-    return render(request, 'costumers/costumerhome.html')
+    return render(request, 'bg_remove/bg_remove.html')
 
 def authenticate_admin(request):
     username = request.POST['username']
@@ -46,6 +46,7 @@ def signup(request):
     r_password = request.POST['re_pwd']
     phone = request.POST['phone']
     email = request.POST['email']
+    print(email, username, password)
 
     if username == '' or email == '':
         messages.add_message(request, messages.ERROR, 'Blank fields not accepted')
