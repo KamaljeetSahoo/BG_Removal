@@ -36,6 +36,73 @@
                         changeBackground(this);
                 });
        });
+
+    $("#username").focusout(function (){   //focusout - changing from one field to another field
+      var name = $("#username").val();
+      console.log(name)
+      if(name.length < 4)
+      {
+        $("#error_username").html("<b>username</b> length should be more than 4");
+        $(".btn").prop('disabled', true);
+      }
+      else
+      {
+        $("#error_username").html(" ");
+        $(".btn").prop('disabled', false);
+      }
+      })
+
+    $("#pwd").focusout(function(){
+      var pwd = $("#pwd").val();
+      var number = /([0-9])/;
+      var alphabets = /([a-zA-Z])/;
+      var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+
+      if(pwd == ""){
+        $(".btn").prop('disabled', true);
+        $("#pwd_strength").html("password field can't be empty");
+        }
+      else if(!(pwd.match(number)) || !(pwd.match(alphabets)) || !(pwd.match(special_characters))){
+        $("#pwd_strength").html("Prefer having strong password with numbers, alphabets and special characters");
+        $(".btn").prop('disabled', true);
+      }
+      else{
+        $("#pwd_strength").html("");
+        $(".btn").prop('disabled', false);
+      }
+    })
+
+      $("#userphone").focusout(function(){
+        var phone = $("#userphone").val();
+        if(phone.length != 10)
+        {
+          $("#phonecheck").html("phone number should have 10 digits");
+        }
+        else
+        {
+          $("#phonecheck").html("");
+        }
+      })
+
+
+    $("#rpwd").keyup(function(){
+        var pwd = $("#pwd").val();
+        var rpwd = $("#rpwd").val();
+        if(rpwd == ""){
+          $("#checkpwd").html("enter the password again");
+          $(".btn").prop('disabled', true);
+        }
+        else if(pwd != rpwd){
+          $("#checkpwd").html("password and re-enter password doesn't match");
+          $(".btn").prop('disabled', true);
+        }
+        else
+        {
+          $("#checkpwd").html("");
+          $(".btn").prop('disabled', false);
+        }
+      })
+
      
       // Creating the function
       function changeBackground(img){

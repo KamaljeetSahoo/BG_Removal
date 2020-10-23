@@ -5,24 +5,28 @@
     {% csrf_token%}
     <div class="form-group">
       <label for="exampleInputEmail1">Username</label>
-      <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Username">
+      <input type="text" id="username" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Username">
     </div>
+    <div id="error_username" style="color: red"></div><br>
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" name="pwd" placeholder="Password">
+      <input type="password" id="pwd" class="form-control" name="pwd" placeholder="Password">
     </div>
+    <div id="pwd_strength" style="color: red"></div><br>
     <div class="form-group">
       <label for="exampleInputPassword1">Re-enter Password</label>
-      <input type="password" class="form-control" name="re_pwd" placeholder="Password">
+      <input type="password" id="rpwd" class="form-control" name="re_pwd" placeholder="Password">
     </div>
+    <div id="checkpwd" style="color: red"></div><br>
     <div class="form-group">
       <label for="exampleInputPassword1">Phone Number</label>
-      <input type="text" class="form-control" name="phone" placeholder="Enter 10 digit phone number">
+      <input type="text" id="userphone" class="form-control" name="phone" placeholder="Enter 10 digit phone number">
     </div>
+    <div id="phonecheck" style="color: red"></div><br>
     <input type="submit" class="btn btn-primary" style="margin-left: 500px" value="REGISTER">
   </form>
 </div>
