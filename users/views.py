@@ -24,7 +24,7 @@ def costumer_register(request):
 
 @login_required
 def costumerhomeview(request):
-    return render(request, 'bg_remove/change_bg.html')
+    return render(request, 'bg_remove/bg_remove.html')
 
 def authenticate_admin(request):
     username = request.POST['username']

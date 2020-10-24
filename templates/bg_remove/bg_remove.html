@@ -2,29 +2,71 @@
 {% block base_temp %}
 <a href="logout/">LOGOUT</a>
 <div class="container" style="margin-top: 50px;">
-<form method="POST" action="process_img/" enctype="multipart/form-data">
+<form method="POST" action="{% url 'bg_remove:process' %}" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group">
         <input type="file" name="input_img" class="form-control" onchange="readURL(this);">
     </div>
     <div class="form-group">
-        <input type="submit" name="">
+        <input type="submit" name="remover_button">
     </div>
 </form>
 <br>
 <div class="row">
-    <div class="col-md-6">
-        <img src="#" id="inp_img" alt="Bhul jinsa">
-    </div>
-    <div class="col-md-6"></div>
 <div>
-<br><br>
 <div class="container">
-    <img id='a' src="{{image}}" height="200px" width="auto">
-    <input type="file" name="xyz" id="file" value='Click'>
-</div>
-</div>
+  <div class="row">
+    <div class="col-sm-6">
+      <!-- <img id='a' height="200px" width="auto"> -->
+      <img src="{{uploaded}}" style="width : 100%">
+      {% if uploaded %}
+        <p style="text-align: center"> uploaded Image</p>
+      {% endif %}
+    </div>
+    {% if image %}
+    <div class="col-sm-6">
+      <img src="{{image}}" style="width : 100%">
+      <p style="text-align: center"> processed Image</p>
+    </div>
+    <form method="POST">
+      {% csrf_token %}
+      <div>To download the transparent image : <button type="submit" name="download_trans">Download</button>
+      <div>To change the background image<button type="submit" name="bg_swap_button">Change Background</button></div>
+    </form>
+    {% if d_trans %}
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit" name="low">LOW</button>
+      <button type="submit" name="medium">MEDIUM</button>
+      <button type="submit" name="high">HIGH</button>
+    </form>
+      {% if tran_img %}
+      <img src="{{tran_img}}"  id="transIMG"  style="display : none">
+      <a href="#" onclick="transHref(this)" download> Download {{quality}} quality </a>
+      {% endif %}
+    {% endif %}
+    {% if bg_swap %}
+      <div class="col-sm-12">
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div>
+              <input type="file" id="files" name="bg_img"  />
+              <input type="submit" name="change_bg_button">
+          </div>
+      </form>
+      </div>
+      {% if bg_change_url %}
+      <div class="col-sm-12">
+        <img src="{{bg_change_url}}" alt="" id="finalImg">
+        <a href="#" onclick="prepHref(this)" download="">Download</a>
+      </div>
+      {% endif %}
+    {% endif %}
+    {% endif %}
+  </div>
 
+</div>
+</div>
 </div>
 
 

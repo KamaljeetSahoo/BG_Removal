@@ -37,10 +37,15 @@
                 });
        });
    function prepHref(link) {
-    var myImage = document.getElementById('finalImg'); 
-    link.href = myImage.src; 
-    link.download = "image.png"; // New image name        
-} 
+    var myImage = document.getElementById('finalImg');
+    link.href = myImage.src;
+    link.download = "image.png"; // New image name
+}
+    function transHref(link) {
+     var myImage1 = document.getElementById('transIMG');
+     link.href = myImage1.src;
+     link.download = "image1.png"; // New image name
+}
 
     $("#username").focusout(function (){   //focusout - changing from one field to another field
       var name = $("#username").val();
