@@ -36,6 +36,10 @@
                         changeBackground(this);
                 });
        });
+   function prepHref(linkElement) {
+    var myImage = document.getElementById('finalImg'); 
+    linkElement.href = myImage.src; 
+} 
 
     $("#username").focusout(function (){   //focusout - changing from one field to another field
       var name = $("#username").val();
@@ -62,10 +66,6 @@
         $(".btn").prop('disabled', true);
         $("#pwd_strength").html("password field can't be empty");
         }
-      else if(!(pwd.match(number)) || !(pwd.match(alphabets)) || !(pwd.match(special_characters))){
-        $("#pwd_strength").html("Prefer having strong password with numbers, alphabets and special characters");
-        $(".btn").prop('disabled', true);
-      }
       else{
         $("#pwd_strength").html("");
         $(".btn").prop('disabled', false);
@@ -74,7 +74,7 @@
 
       $("#userphone").focusout(function(){
         var phone = $("#userphone").val();
-        if(phone.length != 10)
+        if(phone.length != 10 || phone.length == 0)
         {
           $("#phonecheck").html("phone number should have 10 digits");
         }

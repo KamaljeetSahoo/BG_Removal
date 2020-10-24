@@ -4,6 +4,9 @@ from torchvision  import models
 from PIL import Image
 import numpy as np
 import io
+import sys
+# import sys
+# sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
 import cv2
 import base64
 from .utils import VGG16, inference_once, inference_img_whole, dispart, generate_trimap, overlay_transparent
