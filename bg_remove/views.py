@@ -4,8 +4,9 @@ from torchvision  import models
 from PIL import Image
 import numpy as np
 import io
+import cv2
 import base64
-from .utils import VGG16, inference_once, inference_img_whole, dispart, generate_trimap
+from .utils import VGG16, inference_once, inference_img_whole, dispart, generate_trimap, overlay_transparent
 
 # Create your views here.
 model = VGG16(stage = 1)
@@ -34,3 +35,18 @@ def process_img(request):
     image_url = u'data:img/jpeg;base64,'+b64_im.decode('utf-8')
 
     return render(request, 'bg_remove/bg_remove.html', context={'image': image_url})
+
+def change_background(request):
+    inp = request.FILES['input_img']
+    bg = request.FILES['bg_img']
+    overlay = np.array(Image.open(inp))
+    background = np.array(Image.open(bg))
+    background = cv2.resize(background, (overlay.shape[1], overlay.shape[0]))
+    x = overlay_transparent(background, overlay, 0, 0)
+    output = Image.fromarray(x)
+    b = io.BytesIO()
+    output.save(b, format='PNG')
+    b = b.getvalue()
+    b64_im = base64.b64encode(b)
+    image_url = u'data:img/jpeg;base64,'+b64_im.decode('utf-8')
+    return render(request, 'bg_remove/change_bg.html', context={'image': image_url})
