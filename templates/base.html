@@ -36,9 +36,10 @@
                         changeBackground(this);
                 });
        });
-   function prepHref(linkElement) {
+   function prepHref(link) {
     var myImage = document.getElementById('finalImg'); 
-    linkElement.href = myImage.src; 
+    link.href = myImage.src; 
+    link.download = "image.png"; // New image name        
 } 
 
     $("#username").focusout(function (){   //focusout - changing from one field to another field
