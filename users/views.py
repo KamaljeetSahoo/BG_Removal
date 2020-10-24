@@ -68,7 +68,7 @@ def signup(request):
     User.objects.create_user(username=username, password=password, email=email, is_active=False).save()
     user = get_user_model().objects.get(email=email)
 
-    uid = User.objects.get(email = email).id
+    uid = User.objects.get(email = email).username
     print(uid)
     CostumerModel(userid = uid, phoneno=phone).save()
     sendConfirm(user)

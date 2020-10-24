@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('email/', include(mail_urls)),
+    path('', include('payments.urls')) ,
     path('', include('bg_remove.urls'))
 ]
