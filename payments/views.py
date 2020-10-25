@@ -37,7 +37,7 @@ def initiate_payment(request):
         user = authenticate(request, username=username, password=password)
         if user is None:
             messages.add_message(request, messages.ERROR, 'Invalid Credentials')
-            return redirect('costumer_login')
+            return redirect('users:costumer_login')
         if user is not None:
             auth_login(request=request, user=user)
 
@@ -47,7 +47,7 @@ def initiate_payment(request):
     user_id = username
     payment_stats = CostumerModel.objects.get(userid = user_id).payment
     if(payment_stats):
-        return redirect('costumer_dash')
+        return redirect('users:costumer_dash')
 
     transaction = Transaction.objects.create(made_by=user, amount=amount, user_id = user_id)
     transaction.save()
@@ -106,6 +106,6 @@ def callback(request):
         call_back.save()
         if received_data['RESPCODE'][0] =='01':
             payment_update(order_id)
-            return redirect('costumer_dash')
+            return redirect('users:costumer_dash')
         # return render(request, 'payments/callback.html', context=received_data)
-        return redirect('logout_user')
+        return redirect('users:logout_user')

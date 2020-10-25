@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
 {% block base_temp %}
 Costumer Home Page
-<a href="logout/">LOGOUT</a>
+<a href="{% url 'users:logout/' %">LOGOUT</a>
 {% endblock %}

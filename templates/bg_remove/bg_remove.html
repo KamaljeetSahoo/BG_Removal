@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block base_temp %}
-<a href="logout/">LOGOUT</a>
+<a href="{% url 'users:logout_user' %}">LOGOUT</a>
 <div class="container" style="margin-top: 50px;">
 <form method="POST" action="{% url 'bg_remove:process' %}" enctype="multipart/form-data">
     {% csrf_token %}
@@ -56,7 +56,7 @@
       </form>
       </div>
       {% if bg_change_url %}
-      <div class="col-sm-12">
+      <div class="col-sm-6">
         <img src="{{bg_change_url}}" alt="" id="finalImg">
         <a href="#" onclick="prepHref(this)" download="">Download</a>
       </div>

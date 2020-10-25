@@ -9,7 +9,6 @@ from django_email_verification import sendConfirm
 
 
 # Create your views here.
-
 def adminloginview(request):
     return render(request, "admin/adminlogin.html")
 
@@ -50,19 +49,19 @@ def signup(request):
 
     if username == '' or email == '':
         messages.add_message(request, messages.ERROR, 'Blank fields not accepted')
-        return redirect('costumer_register')
+        return redirect('users:costumer_register')
 
     if password != r_password:
         messages.add_message(request, messages.ERROR, 'Password and Re-Enter password not matching')
-        return redirect('costumer_register')
+        return redirect('users:costumer_register')
 
     if User.objects.filter(email = email).exists():
         messages.add_message(request, messages.ERROR, 'Email already exists')
-        return redirect('costumer_register')
+        return redirect('users:costumer_register')
 
     if User.objects.filter(username = username).exists():
         messages.add_message(request, messages.ERROR, 'Username already Exists')
-        return redirect('costumer_register')
+        return redirect('users:costumer_register')
 
     #user = get_user_model().objects.create(username=username, password=password, email=email)
     User.objects.create_user(username=username, password=password, email=email, is_active=False).save()
@@ -73,7 +72,7 @@ def signup(request):
     CostumerModel(userid = uid, phoneno=phone).save()
     sendConfirm(user)
     messages.add_message(request, messages.ERROR, 'Registration Succesful')
-    return redirect('costumer_login')
+    return redirect('users:costumer_login')
 
 def userlogin(request):
     username = request.POST['username']
@@ -91,4 +90,4 @@ def userlogin(request):
 
 def userlogout(request):
     logout(request)
-    return redirect('costumer_login')
+    return redirect('users:costumer_login')

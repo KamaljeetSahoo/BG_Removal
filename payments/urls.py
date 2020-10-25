@@ -5,8 +5,6 @@ from users.views import costumerhomeview
 app_name = "pay_urls"
 urlpatterns = [
     path('pay/', initiate_payment, name='pay'),
-    path('', costumerhomeview, name='costumer_dash'),
-
     path('callback/', callback, name='callback'),
     path('', include('users.urls')),
 ]

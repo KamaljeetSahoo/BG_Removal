@@ -113,7 +113,7 @@ EMAIL_MAIL_SUBJECT = 'Confirm your email'
 EMAIL_MAIL_HTML = 'costumers/emailverification.html'
 EMAIL_MAIL_PLAIN = 'costumers/mail_body.txt'
 EMAIL_PAGE_TEMPLATE = 'costumers/verification_success.html'
-EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
+EMAIL_PAGE_DOMAIN = 'http://f5060441dddf.ngrok.io/'
 
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # SESSION_COOKIE_AGE = 0
