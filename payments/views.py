@@ -63,7 +63,7 @@ def initiate_payment(request):
         # ('EMAIL', request.user.email),
         # ('MOBILE_N0', '9911223388'),
         ('INDUSTRY_TYPE_ID', settings.PAYTM_INDUSTRY_TYPE_ID),
-        ('CALLBACK_URL', ' https://8882d87c3b3e.ngrok.io/callback/'),
+        ('CALLBACK_URL', 'http://127.0.0.1:8000/'),
         # ('PAYMENT_MODE_ONLY', 'NO'),
     )
 
