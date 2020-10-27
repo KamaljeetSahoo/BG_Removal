@@ -82,11 +82,11 @@ def userlogin(request):
 
     if user is not None:
         login(request, user)
-        return redirect('costumer_dash')
+        return redirect('users:costumer_dash')
 
     if user is None:
         messages.add_message(request, messages.ERROR, 'Invalid Credentials')
-        return redirect('costumer_login')
+        return redirect('users:costumer_login')
 
 def userlogout(request):
     logout(request)
