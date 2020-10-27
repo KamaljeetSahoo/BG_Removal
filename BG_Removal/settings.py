@@ -113,7 +113,7 @@ EMAIL_MAIL_SUBJECT = 'Confirm your email'
 EMAIL_MAIL_HTML = 'costumers/emailverification.html'
 EMAIL_MAIL_PLAIN = 'costumers/mail_body.txt'
 EMAIL_PAGE_TEMPLATE = 'costumers/verification_success.html'
-EMAIL_PAGE_DOMAIN = ' https://8882d87c3b3e.ngrok.io/'
+EMAIL_PAGE_DOMAIN = ' http://127.0.0.1:8000/'
 
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # SESSION_COOKIE_AGE = 0
@@ -139,8 +139,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #paayment settings
-PAYTM_MERCHANT_ID = 'SrxHZo59240864679478'
-PAYTM_SECRET_KEY = '8Kj922PBu5xJipjZ'
+PAYTM_MERCHANT_ID = '<>'
+PAYTM_SECRET_KEY = '<>'
 PAYTM_WEBSITE = 'WEBSTAGING'
 PAYTM_CHANNEL_ID = 'WEB'
 PAYTM_INDUSTRY_TYPE_ID = 'Retail'
